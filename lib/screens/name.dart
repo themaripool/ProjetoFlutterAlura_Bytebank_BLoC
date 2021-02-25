@@ -11,10 +11,7 @@ class NameCubit extends Cubit<String>{
 class NameContainer extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => NameCubit("Mariela") ,
-      child: NameView(),
-    );
+    return NameView(); //name cubit sendo criado no dashboardContainer
   }
 }
 
@@ -25,7 +22,9 @@ class NameView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // ignore: deprecated_member_use
-    _nameController.text = context.bloc<NameCubit>().state; // nao precisa de rebuild ao alterar o estado
+    // nao precisa de rebuild ao alterar o estado
+    _nameController.text = context.bloc<NameCubit>().state;
+
     return Scaffold(
       appBar: AppBar(title: Text("Change Name"),),
       body:  Column(
